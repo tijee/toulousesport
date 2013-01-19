@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="app_name">Toulouse Sports</string>
+    <string name="error">Erreur lors du chargement des données</string>
+    <string name="select_sport">Sélectionnez un sport</string>
+
+</resources>
