@@ -72,8 +72,8 @@ public class Main {
 		// name
 		String name = columns[COLUMN_NAME];
 		// address
-		double[] latlng = getLatLngFromAddress(columns[COLUMN_ADDRESS]
-			+ " Toulouse");
+		String address = columns[COLUMN_ADDRESS];
+		double[] latlng = getLatLngFromAddress(address + " Toulouse");
 		if (latlng == null) {
 		    continue;
 		}
@@ -82,7 +82,7 @@ public class Main {
 			+ " " + columns[COLUMN_ACTIVITIES]);
 		for (String sport : sports) {
 		    sportFacilities.add(new SportFacility(sport, name,
-			    latlng[0], latlng[1]));
+			    latlng[0], latlng[1], address));
 		}
 	    }
 	    dataInputStream.close();
@@ -99,7 +99,8 @@ public class Main {
 		bufferedWriter.write(sportFacility.sport + COLUMN_DELIMITER
 			+ sportFacility.name + COLUMN_DELIMITER
 			+ sportFacility.lat + COLUMN_DELIMITER
-			+ sportFacility.lng + "\n");
+			+ sportFacility.lng + COLUMN_DELIMITER
+			+ sportFacility.address + "\n");
 	    }
 	    bufferedWriter.close();
 	} catch (Exception e) {
@@ -165,12 +166,15 @@ public class Main {
 	private String name;
 	private double lat;
 	private double lng;
+	private String address;
 
-	private SportFacility(String sport, String name, double lat, double lng) {
+	private SportFacility(String sport, String name, double lat,
+		double lng, String address) {
 	    this.sport = sport;
 	    this.name = name;
 	    this.lat = lat;
 	    this.lng = lng;
+	    this.address = address;
 	}
     }
 }

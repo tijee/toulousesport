@@ -33,6 +33,7 @@ public class MapActivity extends SherlockFragmentActivity implements
     private static final int COLUMN_NAME = 1;
     private static final int COLUMN_LAT = 2;
     private static final int COLUMN_LNG = 3;
+    private static final int COLUMN_ADDRESS = 4;
 
     private HashMap<String, ArrayList<SportFacility>> sportFacilities;
     private ArrayAdapter<String> sportAdapter;
@@ -64,6 +65,7 @@ public class MapActivity extends SherlockFragmentActivity implements
 				    new LatLng(sportFacility.lat,
 					    sportFacility.lng))
 			    .title(sportFacility.name)
+			    .snippet(sportFacility.address)
 			    .icon(BitmapDescriptorFactory
 				    .defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
 		}
@@ -120,12 +122,13 @@ public class MapActivity extends SherlockFragmentActivity implements
 	    String name = columns[COLUMN_NAME];
 	    double lat = Double.parseDouble(columns[COLUMN_LAT]);
 	    double lng = Double.parseDouble(columns[COLUMN_LNG]);
+	    String address = columns[COLUMN_ADDRESS];
 	    ArrayList<SportFacility> list = sportFacilities.get(sport);
 	    if (list == null) {
 		list = new ArrayList<SportFacility>();
 		sportFacilities.put(sport, list);
 	    }
-	    list.add(new SportFacility(sport, name, lat, lng));
+	    list.add(new SportFacility(sport, name, lat, lng, address));
 	}
 	bufferedReader.close();
     }
