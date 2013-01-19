@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.thomasgallinari.toulousesports"
-    android:versionCode="2"
+    android:versionCode="4"
     android:versionName="1.0.0" >
 
     <permission
@@ -39,16 +39,9 @@
             </intent-filter>
         </activity>
 
-        <!-- debug -->
-        <!--
-             <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyD0DAxmEcgnUYzwmWrEp4XSBmMP2L-5sAk" />
-        -->
-        <!-- release -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="RELEASE_KEY_HERE" />
+            android:value="GOOGLE_MAPS_API_KEY" />
     </application>
 
 </manifest>
