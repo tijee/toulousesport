@@ -48,7 +48,7 @@
         <!-- release -->
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCNLHKaYGcG6xqHCjH-xPo4jiLFoVtqwTQ" />
+            android:value="RELEASE_KEY_HERE" />
     </application>
 
 </manifest>
