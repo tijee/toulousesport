@@ -20,6 +20,7 @@ import com.actionbarsherlock.view.Window;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -58,9 +59,13 @@ public class MapActivity extends SherlockFragmentActivity implements
 		    .get(selectedSport);
 	    if (selectedSportFacilities != null) {
 		for (SportFacility sportFacility : selectedSportFacilities) {
-		    map.addMarker(new MarkerOptions().position(
-			    new LatLng(sportFacility.lat, sportFacility.lng))
-			    .title(sportFacility.name));
+		    map.addMarker(new MarkerOptions()
+			    .position(
+				    new LatLng(sportFacility.lat,
+					    sportFacility.lng))
+			    .title(sportFacility.name)
+			    .icon(BitmapDescriptorFactory
+				    .defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
 		}
 	    }
 	}
@@ -79,7 +84,7 @@ public class MapActivity extends SherlockFragmentActivity implements
 		.findFragmentById(R.id.map)).getMap();
 	map.setMyLocationEnabled(true);
 	map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(
-		43.604482, 1.443962), 12), 1000, null);
+		43.604482, 1.443962), 12), 2000, null);
 	map.setOnInfoWindowClickListener(this);
 
 	ActionBar actionBar = getSupportActionBar();
