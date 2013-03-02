@@ -41,14 +41,20 @@ public class MapActivity extends SherlockFragmentActivity implements
 
     @Override
     public void onInfoWindowClick(Marker marker) {
-	Location currentLocation = map.getMyLocation();
-	double sLat = currentLocation.getLatitude();
-	double sLng = currentLocation.getLongitude();
 	double dLat = marker.getPosition().latitude;
 	double dLng = marker.getPosition().longitude;
-	startActivity(new Intent(android.content.Intent.ACTION_VIEW,
-		Uri.parse("http://maps.google.com/maps?saddr=" + sLat + ","
-			+ sLng + "&daddr=" + dLat + "," + dLng)));
+	Location currentLocation = map.getMyLocation();
+	if (currentLocation != null) {
+	    double sLat = currentLocation.getLatitude();
+	    double sLng = currentLocation.getLongitude();
+	    startActivity(new Intent(android.content.Intent.ACTION_VIEW,
+		    Uri.parse("http://maps.google.com/maps?saddr=" + sLat + ","
+			    + sLng + "&daddr=" + dLat + "," + dLng)));
+	} else {
+	    startActivity(new Intent(android.content.Intent.ACTION_VIEW,
+		    Uri.parse("http://maps.google.com/maps?q=loc:" + dLat + "+"
+			    + dLng)));
+	}
     }
 
     @Override
